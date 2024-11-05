@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.build("viswaraje/nodejs-api:latest")
+                    docker.build("viswaraje/viswaraje/nodejs-api:latest")
                 }
             }
         }
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials-id') {
-                        docker.image("viswaraje/nodejs-api:latest").push()
+                        docker.image("viswaraje/viswaraje/nodejs-api:latest").push()
                     }
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
                     // Ensure container is removed if it exists
                     sh 'docker rm -f nodejs-api || true'
                     // Run Docker in detached mode without `nohup`
-                    sh 'docker run -d --name nodejs-api -p 3001:3000 viswaraje/nodejs-api:latest'
+                    sh 'docker run -d --name nodejs-api -p 3001:3000 viswaraje/viswaraje/nodejs-api:latest'
                 }
             }
         }
