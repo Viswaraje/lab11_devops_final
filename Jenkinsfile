@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/Viswaraje/lab11_devops_final.git'
+                git branch: 'main', url: 'https://github.com/Viswaraje/lab11_devops_final.git'
             }
         }
         stage('Build') {
